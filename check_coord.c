@@ -1,5 +1,31 @@
 #include "filler.h"
 
+void		ft_get_best_position(t_bot *bot, int fd)
+{
+	t_answer		*temp;
+	int				best_answer;
+
+	temp = (t_answer*)malloc(sizeof(t_answer*));
+	best_answer = bot->answer_list->square;
+	temp = bot->answer_list->next;
+	while (temp)
+	{
+		if (temp->square < best_answer)
+		{
+			best_answer = temp->square;
+			bot->answer_x = temp->x;
+			bot->answer_y = temp->y;
+		}
+		temp = temp->next;
+	}
+	// ft_putstr_fd("Final answer: ", fd);
+	// ft_putstr_fd(ft_itoa(best_answer), fd);
+	ft_putstr_fd(ft_itoa(bot->answer_y), 1);
+	ft_putstr_fd(" ", 1);
+	ft_putstr_fd(ft_itoa(bot->answer_x), 1);
+	ft_putstr_fd("\n", 1);
+}
+
 void		ft_check_coord(int x, int y, int i, int j, t_bot *bot, int fd)
 {
 	if (i >= bot->piece_width)

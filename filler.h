@@ -51,4 +51,5 @@ char				**ft_create_field(t_bot *bot, char *str);
 void				ft_create_solution(t_bot *bot, int fd);
 void				ft_check_piece(t_bot *bot, int fd);
 void				ft_check_coord(int x, int y, int i, int j, t_bot *bot, int fd);
+void				ft_get_best_position(t_bot *bot, int fd);
 #endif

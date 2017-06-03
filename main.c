@@ -20,6 +20,7 @@ int		main(int argc, char **argv)
 		// ft_putstr_fd("\n", fd);
 		bot.piece = ft_create_piece(&bot);
 		ft_check_piece(&bot, fd);
+		ft_get_best_position(&bot, fd);
 	}
 	return (0);
 }

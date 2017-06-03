@@ -33,31 +33,31 @@ void		ft_create_solution(t_bot *bot, int fd)
 	answer->y = bot->answer_y;
 	answer->square = ft_calc_square(bot); 
 	answer->next = NULL;
+	temp = (t_answer*)malloc(sizeof(t_answer*));
 	temp = bot->answer_list;
+	// ft_putstr_fd("Answer-1: ", fd);
+	// ft_putstr_fd(ft_itoa(bot->answer_y), fd);
+	// ft_putstr_fd(ft_itoa(bot->answer_x), fd);
+	// ft_putstr_fd("\n", fd);
 	if (!bot->answer_list)
 	{
-		ft_putstr_fd("HERR\n", fd);
 		bot->answer_list = answer;
-		ft_putstr_fd("Answer-1: ", fd);
-		ft_putstr_fd(ft_itoa(answer->square), fd);
-		ft_putstr_fd("\n", fd);
+		// ft_putstr_fd("Answer-1: ", fd);
+		// ft_putstr_fd(ft_itoa(answer->square), fd);
+		// ft_putstr_fd("\n", fd);
 	}
 	else
 	{
-		ft_putstr_fd("FRAU\n", fd);
-		ft_putstr_fd(ft_itoa(answer->square), fd);
-		ft_putstr_fd("\n", fd);
 		while (temp)
 		{
-			ft_putstr_fd("Ta-DA\n", fd);
 			if (!temp->next)
 				break ;
-			ft_putstr_fd(ft_strjoin("string: ", ft_itoa(temp->square)), fd);
+			// ft_putstr_fd(ft_strjoin("string: ", ft_itoa(temp->square)), fd);
 			temp = temp->next;
 		}
-		ft_putstr_fd("Answer-2: ", fd);
-		ft_putstr_fd(ft_itoa(answer->square), fd);
-		ft_putstr_fd("\n", fd);
+		// ft_putstr_fd("Answer-2: ", fd);
+		// ft_putstr_fd(ft_itoa(answer->square), fd);
+		// ft_putstr_fd("\n", fd);
 		temp->next = answer;
 	}
 }
