@@ -36,17 +36,18 @@ void		ft_check_coord(int x, int y, int i, int j, t_bot *bot, int fd)
 		x = bot->start_x_val;
 	}
 	if (j >= bot->piece_height || y >= bot->field_height)
+	//|| x + bot->piece_width > bot->field_width || x + bot->piece_height > bot->field_height) // Pieces strike out of the map.
 		return ;
 	if (bot->piece[j][i] == '*')
 	{
 		if (bot->field[y][x] == bot->my_sign)
 		{
-			// ft_putstr_fd("\nHERE: ", fd);
-			// ft_putstr_fd(ft_strjoin(ft_itoa(y), ft_itoa(x)), fd);
-			// ft_putstr_fd("\n", fd);
-			// ft_putstr_fd("\nBesides: ", fd);
-			// ft_putstr_fd(ft_strjoin(ft_itoa(j), ft_itoa(i)), fd);
-			// ft_putstr_fd("\n", fd);
+			ft_putstr_fd("\nHERE: ", fd);
+			ft_putstr_fd(ft_strjoin(ft_itoa(y), ft_itoa(x)), fd);
+			ft_putstr_fd("\n", fd);
+			ft_putstr_fd("\nBesides: ", fd);
+			ft_putstr_fd(ft_strjoin(ft_itoa(j), ft_itoa(i)), fd);
+			ft_putstr_fd("\n", fd);
 			bot->sign_met += 1;
 			if (bot->sign_met > 1)
 				return ;
