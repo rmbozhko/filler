@@ -18,6 +18,7 @@ void		ft_get_best_position(t_bot *bot, int fd)
 		}
 		temp = temp->next;
 	}
+	//free(temp); // avoid memory leaks :)
 	// ft_putstr_fd("Final answer: ", fd);
 	// ft_putstr_fd(ft_itoa(best_answer), fd);
 	ft_putstr_fd(ft_itoa(bot->answer_y), 1);
