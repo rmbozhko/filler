@@ -1,35 +1,26 @@
 #include "filler.h"
 
-static void		ft_try_piece(int x, int y, t_bot *bot, int fd)
-{
-	bot->sign_met = 0;
-	if (bot->field_height - y < bot->piece_height || y >= bot->field_height)
-		return ;
-	bot->start_x_val = x;
-	bot->answer_x = x;
-	bot->answer_y = y;
-	ft_check_coord(x, y, 0, 0, bot, fd);
-	// ft_putstr_fd("Bot->sign_met: ", fd);
-	// ft_putstr_fd(ft_itoa(bot->sign_met), fd);
-	// ft_putstr_fd("\n", fd);
-	(bot->sign_met == 1) ? ft_create_solution(bot, fd) : 0;
-	//ft_putstr_fd(ft_strjoin(ft_strjoin(ft_itoa(bot->answer_y), ft_itoa(bot->answer_x)), "\n"), fd) : 0;
-	(bot->field_width - x > bot->piece_width) ? ft_try_piece(++x, y, bot, fd) : ft_try_piece(0, ++y, bot, fd);
-}
+t_bot		*g_bot;
 
-void		ft_check_piece(t_bot *bot, int fd)
+int		main(void)
 {
-	int		x;
-	int		y;
+	char		*line;
 
-	y = -1;
-	while (bot->field[++y])
+	g_bot = (t_bot*)malloc(sizeof(t_bot*));
+	g_bot->fd = 0;
+	get_next_line(g_bot->fd, &line);
+	g_bot->my_sign = (ft_strsplit(line, ' ')[2][1] == '1') ? 'O' : 'X';
+	g_bot->opp_sign = OPP_SIGN(g_bot->my_sign);
+	g_bot->start_x_val = 0;
+	g_bot->answer = (t_answer*)malloc(sizeof(t_answer*));
+	while (get_next_line(g_bot->fd, &line) > 0)
 	{
-		x = -1;
-		while (bot->field[y][++x])
-		{
-			if (bot->field[y][x] != bot->opp_sign)
-				return (ft_try_piece(x, y, bot, fd));
-		}
+		g_bot->sign_met = 0;
+		g_bot->field = ft_create_field(line);
+		g_bot->piece = ft_create_piece();
+		ft_check_piece();
+		ft_print_answer();
 	}
+	return (0);
 }
+

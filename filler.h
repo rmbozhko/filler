@@ -15,41 +15,48 @@
 #define FILLER_H
 
 # include "get_next_line.h"
-# include <stdio.h>
+# include "libft/libft.h"
 
 # define OPP_SIGN(my_sign) ((my_sign == 'X') ? 'O' : 'X');
+// Can we use bresenheim somehow to calc the answer, which has min length to opp_sign?
+#define HAS_DOT_AROUND (g_bot->field[y][x - 1] == '.' || g_bot->field[y][x + 1] == '.' \
+|| g_bot->field[y - 1][x] == '.' || g_bot->field[y + 1][x] == '.') // TAKE Care about seg faults x + 1 || y - 1 can cause.
+//#define ABS(x) (x < 0) ? (-x) : (x) // https://stackoverflow.com/questions/2025372/c-macro-question-x-vs-x
+#define F_DOT g_bot->field[y][x] == '.'
+#define F_M_S g_bot->field[y][x] == g_bot->my_sign
+#define F_O_S g_bot->field[y][x] == g_bot->opp_sign
 
 typedef	struct 	s_answer
 {
 	int						x;
 	int						y;
 	int						square;
-	struct 	s_answer		*next;
 }				t_answer;
 
 typedef	struct s_bot
 {
-	int 			fd; // FOR DEBUGGING
+	int 			fd;
 	char			my_sign;
 	int				field_height;
 	int				field_width;
 	int				piece_height;
+	int				piece_width;
 	int				start_x_val;
-	short	int		sign_met;
+	int				sign_met;
 	int				answer_x;
 	int				answer_y;
-	int				piece_width;
 	char			**field;
 	char			**piece;
-	// char			field[field_height][field_width];
 	char			opp_sign;
-	t_answer		*answer_list;
+	t_answer		*answer;
 }				t_bot;
 
-char				**ft_create_piece(t_bot *bot);
-char				**ft_create_field(t_bot *bot, char *str);
-void				ft_create_solution(t_bot *bot, int fd);
-void				ft_check_piece(t_bot *bot, int fd);
-void				ft_check_coord(int x, int y, int i, int j, t_bot *bot, int fd);
-void				ft_get_best_position(t_bot *bot, int fd);
+extern	t_bot		*g_bot; 
+
+char				**ft_create_piece(void);
+char				**ft_create_field(char *str);
+void				ft_determine_best_option(void);
+void				ft_check_piece(void);
+void				ft_field_and_piece(void);
+void				ft_print_answer(void);
 #endif

@@ -38,15 +38,16 @@ HEADER = libft.h
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
+	@ar rc $(NAME) $(OBJ)
+	@echo "\033[0;31mLibft is compiled\033[0m"
 
 %.o : %.c $(HEADER)
-	$(CC) $(CFLAGS) $<
+	@$(CC) $(CFLAGS) $<
 
 clean:
-	rm -rf $(OBJ)
+	@rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
