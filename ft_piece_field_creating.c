@@ -1,6 +1,6 @@
 #include "filler.h"
 
-static	char		**ft_create_bid_arr(int height, int flag, int fd)
+static	char		**ft_create_bid_arr(int height, int flag)
 {
 	char		**temp;
 	char		*line;
@@ -10,27 +10,27 @@ static	char		**ft_create_bid_arr(int height, int flag, int fd)
 	temp = (char**)malloc(sizeof(char*) * height + 1);
 	while (++counter < height)
 	{
-		get_next_line(g_bot->fd, &line, fd);
+		get_next_line(g_bot->fd, &line);
 		temp[counter] = (flag) ? ft_strsplit(line, ' ')[1] : ft_strdup(line);
 	}
 	temp[counter] = NULL;
 	return (temp);
 }
 
-char				**ft_create_piece(int fd)
+char				**ft_create_piece(void)
 {
 	char		*line;
 
-	get_next_line(g_bot->fd, &line, fd);
+	get_next_line(g_bot->fd, &line);
 	g_bot->piece_height = ft_atoi(ft_strsplit(line, ' ')[1]);
 	g_bot->piece_width = ft_atoi(ft_strsplit(line, ' ')[2]);
-	return(ft_create_bid_arr(g_bot->piece_height, 0, fd));
+	return(ft_create_bid_arr(g_bot->piece_height, 0));
 }
 
-char				**ft_create_field(char *line, int fd)
+char				**ft_create_field(char *line)
 {
 	g_bot->field_height = ft_atoi(ft_strsplit(line, ' ')[1]);
 	g_bot->field_width = ft_atoi(ft_strsplit(line, ' ')[2]);
-	get_next_line(g_bot->fd, &line, fd);
-	return (ft_create_bid_arr(g_bot->field_height, 1, fd));
+	get_next_line(g_bot->fd, &line);
+	return (ft_create_bid_arr(g_bot->field_height, 1));
 }

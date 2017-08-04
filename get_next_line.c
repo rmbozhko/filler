@@ -22,21 +22,6 @@ static t_node	*ft_create(int fd)
 	return (temp);
 }
 
-static t_node	*ft_cmp_fd(int fd, t_node *demo)
-{
-	t_node	*temp;
-
-	temp = demo;
-	while (temp)
-	{
-		if (temp->fd == fd)
-			break ;
-		(!(temp->next)) ? temp->next = ft_create(fd) : 0;
-		temp = temp->next;
-	}
-	return (temp);
-}
-
 static int		ft_rtn_line(t_node *temp, char buff[], char **line)
 {
 	if (ft_strchr(temp->str, '\n'))
@@ -54,7 +39,7 @@ static int		ft_rtn_line(t_node *temp, char buff[], char **line)
 	return (0);
 }
 
-int				get_next_line(const int fd, char **line, int o_fd)
+int				get_next_line(const int fd, char **line)
 {
 	static	t_node		*head = NULL;
 	int					bytes;

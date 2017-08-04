@@ -27,6 +27,5 @@ typedef	struct	s_node
 	struct s_node	*next;
 }				t_node;
 
-// int				get_next_line(const int fd, char **line);
-int				get_next_line(const int fd, char **line, int o_fd);
+int				get_next_line(const int fd, char **line);
 #endif
