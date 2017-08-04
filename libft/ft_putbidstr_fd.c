@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_putbidstr_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apinchuk <apinchuk@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: rbozhko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/10 14:51:28 by apinchuk          #+#    #+#             */
-/*   Updated: 2016/12/10 15:09:08 by apinchuk         ###   ########.fr       */
+/*   Created: 2017/08/04 13:39:42 by rbozhko           #+#    #+#             */
+/*   Updated: 2017/08/04 16:38:19 by rbozhko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+void		ft_putbidstr_fd(char **arr, int fd)
 {
-	char	*temp;
+	size_t		i;
 
-	if ((temp = (char*)malloc(size + 1)) == NULL)
-		return (NULL);
-	return (ft_memset(temp, 0, size + 1));
+	i = 0;
+	while (arr[i])
+	{
+		ft_putstr_fd(arr[i], fd);
+		ft_putstr_fd("\n", fd);
+		i++;
+	}
 }

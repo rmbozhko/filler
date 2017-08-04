@@ -6,7 +6,7 @@
 #    By: apinchuk <apinchuk@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 14:02:20 by apinchuk          #+#    #+#              #
-#    Updated: 2016/12/06 15:12:51 by apinchuk         ###   ########.fr        #
+#    Updated: 2017/08/04 13:37:27 by rbozhko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC_C = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c \
 		ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c \
 		ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 		ft_lstmap.c ft_is_whitespaces.c ft_word.c \
-		ft_digit.c ft_is_lowercase.c
+		ft_digit.c ft_is_lowercase.c ft_putbidstr_fd.c
 
 OBJ = $(SRC_C:.c=.o)
 CFLAGS = -c -Wall -Wextra -Werror

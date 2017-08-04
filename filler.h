@@ -53,10 +53,10 @@ typedef	struct s_bot
 
 extern	t_bot		*g_bot; 
 
-char				**ft_create_piece(void);
-char				**ft_create_field(char *str);
-void				ft_determine_best_option(void);
-void				ft_check_piece(void);
-void				ft_field_and_piece(void);
-void				ft_print_answer(void);
+char				**ft_create_piece(int fd);
+char				**ft_create_field(char *str, int fd);
+void				ft_determine_best_option(int fd);
+void				ft_check_piece(int fd);
+void				ft_field_and_piece(int fd);
+void				ft_print_answer(int fd);
 #endif

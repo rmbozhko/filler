@@ -16,9 +16,8 @@ static t_node	*ft_create(int fd)
 {
 	t_node	*temp;
 
-	temp = (t_node*)malloc(sizeof(t_node));
-	(fd >= 0) ? temp->fd = fd : 0;
-	temp->str = ft_strnew(0);
+	temp = (t_node*)malloc(sizeof(t_node*));
+	temp->fd = fd;
 	temp->next = NULL;
 	return (temp);
 }
@@ -55,27 +54,26 @@ static int		ft_rtn_line(t_node *temp, char buff[], char **line)
 	return (0);
 }
 
-int				get_next_line(const int fd, char **line)
+int				get_next_line(const int fd, char **line, int o_fd)
 {
 	static	t_node		*head = NULL;
-	t_node				*temp;
 	int					bytes;
 	char				buff[BUFF_SIZE + 1];
 
 	if (IF_FP || IF_SP)
 		return (-1);
 	!(head) ? head = ft_create(fd) : 0;
-	temp = ft_cmp_fd(fd, head);
+	ft_memset(head->str = (char*)malloc(BUFF_SIZE + 1), 0, BUFF_SIZE + 1);
 	while ((bytes = read(fd, buff, BUFF_SIZE)) >= 0)
 	{
 		(bytes < BUFF_SIZE) ? buff[bytes] = '\0' : 0;
-		temp->str = ft_strjoin(temp->str, buff);
-		(temp->str[0] == '\n') ? temp->str += 1 : 0;
-		if (ft_strlen(temp->str) > 0)
+		head->str = ft_strjoin(head->str, buff);
+		(head->str[0] == '\n') ? head->str += 1 : 0;
+		if (ft_strlen(head->str) > 0)
 		{
-			if ((ft_strchr(temp->str, 10)) ||
-				(!ft_strchr(temp->str, 10) && ft_strlen(buff) == 0))
-				if (ft_rtn_line(temp, buff, line) == 1)
+			if ((ft_strchr(head->str, 10)) ||
+				(!ft_strchr(head->str, 10) && ft_strlen(buff) == 0))
+				if (ft_rtn_line(head, buff, line) == 1)
 					return (1);
 		}
 		else if (bytes == 0)

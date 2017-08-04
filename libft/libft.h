@@ -6,7 +6,7 @@
 /*   By: apinchuk <apinchuk@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/29 13:35:57 by apinchuk          #+#    #+#             */
-/*   Updated: 2016/12/18 14:10:42 by apinchuk         ###   ########.fr       */
+/*   Updated: 2017/08/04 13:39:10 by rbozhko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,5 @@ int				ft_is_whitespaces(char const c);
 int				ft_word(char const *s, char c);
 size_t			ft_digit(int n);
 int				ft_is_lowercase(char *str);
-
+void			ft_putbidstr_fd(char **arr, int fd);
 #endif
