@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_piece_field_creating.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rbozhko <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/06 16:18:34 by rbozhko           #+#    #+#             */
+/*   Updated: 2017/08/06 16:18:48 by rbozhko          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
 static	char		**ft_create_bid_arr(int height, int flag)
@@ -24,7 +36,7 @@ char				**ft_create_piece(void)
 	get_next_line(g_bot->fd, &line);
 	g_bot->piece_height = ft_atoi(ft_strsplit(line, ' ')[1]);
 	g_bot->piece_width = ft_atoi(ft_strsplit(line, ' ')[2]);
-	return(ft_create_bid_arr(g_bot->piece_height, 0));
+	return (ft_create_bid_arr(g_bot->piece_height, 0));
 }
 
 char				**ft_create_field(char *line)

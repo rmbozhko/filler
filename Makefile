@@ -1,7 +1,7 @@
 NAME = filler
 CC = gcc
 
-SRC = check_coord.c ft_answers_creation.c filler.c ft_piece_field_creating.c get_next_line.c
+SRC = check_coord.c ft_answer_creation.c filler.c ft_piece_field_creating.c get_next_line.c
 OBJ = $(SRC:.c=.o)
 CFLAGS = -c -Wall -Wextra -Werror
 HEADER = filler.h
@@ -22,6 +22,6 @@ clean:
 
 fclean: clean
 	@make fclean -C libft
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
