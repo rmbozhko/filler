@@ -6,7 +6,7 @@
 /*   By: rbozhko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/06 16:15:51 by rbozhko           #+#    #+#             */
-/*   Updated: 2017/08/06 16:17:34 by rbozhko          ###   ########.fr       */
+/*   Updated: 2017/08/06 16:28:09 by rbozhko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int			ft_calc_square(int y, int x)
 			if (g_bot->field[y][x] == g_bot->opp_sign)
 			{
 				res = ft_abs(x - g_bot->answer_x) + ft_abs(y - g_bot->answer_y);
-				max_distance = (res < max_distance) ? result : max_distance;
+				max_distance = (res < max_distance) ? res : max_distance;
 			}
 		}
 	}
